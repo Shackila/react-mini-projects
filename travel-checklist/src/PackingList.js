@@ -14,7 +14,7 @@ const PackingList = (props) => {
     <div>
       <div className="list">
         {newItem.map((item) => (
-          <Item itemProp={item} />
+          <Item key={item.id} itemProp={item} />
         ))}
       </div>
       <hr />

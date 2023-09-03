@@ -9,7 +9,7 @@ const Form = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setDescription(e.target.value);
-    console.log(description); 
+    console.log(description);
   };
   return (
     <div className="form-wrapper">
@@ -28,7 +28,6 @@ const Form = () => {
           <input
             type="text"
             placeholder="item..."
-            value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></input>
           <button type="submit">ADD</button>
