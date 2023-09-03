@@ -1,0 +1,11 @@
+.stats {
+  display: flex;
+  justify-content: space-evenly;
+  color: #6c3428;
+  font-size: 24px;
+  font-style: oblique;
+}
+.stats-wrapper {
+  background-color: #cee6f3;
+  height: 190px;
+}
