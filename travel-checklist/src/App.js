@@ -11,11 +11,18 @@ function App() {
   const addItem = (newItem) => {
     setItems((items) => [...items, newItem]);
   };
+  const deleteItem = (id) => {
+    setItems((items) => items.filter((propItem) => propItem.id !== id));
+  };
   return (
     <div>
       <Logo />
       <Form onAddItem={addItem} key={new Date().getUTCMinutes} />
-      <PackingList propItem={items} key={new Date().getUTCMilliseconds} />
+      <PackingList
+        propItem={items}
+        onDeleteItem={deleteItem}
+        key={new Date().getUTCMilliseconds}
+      />
       <Stats />
     </div>
   );

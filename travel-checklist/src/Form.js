@@ -7,17 +7,17 @@ const Form = ({ onAddItem }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (description.trim() !== "") {
-      const newItem = {
-        description,
-        quantity,
-        isPacked: false,
-        id: new Date().getSeconds(),
-      };
+    const newItem = {
+      description,
+      quantity,
+      isPacked: false,
+      id: new Date().getSeconds(),
+    };
+    if (description.trim("") !== "") {
       onAddItem(newItem);
-      setQuantity(1);
-      setDescription("");
     }
+    setQuantity(1);
+    setDescription("");
   };
   return (
     <div className="form-wrapper">
@@ -39,9 +39,7 @@ const Form = ({ onAddItem }) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)} //state changes
           ></input>
-          <button type="submit" onClick={onAddItem}>
-            Add
-          </button>
+          <button type="submit">Add</button>
         </form>
       </div>
       <hr />

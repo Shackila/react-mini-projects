@@ -1,11 +1,17 @@
 import "./Item.css";
-const Item = (props) => {
+const Item = ({ itemProp, onDeleteItemProp }) => {
   return (
     <div className="listItem">
       <li>
         <span>
-          {""}
-          {props.itemProp.quantity} {props.itemProp.description}
+          {itemProp.quantity} {itemProp.description}
+          {"  "}
+          <button
+            style={{ color: "red", fontWeight: "bolder" }}
+            onClick={() => onDeleteItemProp(itemProp.id)}
+          >
+            ×
+          </button>
         </span>
       </li>
     </div>
