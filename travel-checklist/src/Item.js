@@ -1,10 +1,19 @@
 import "./Item.css";
-const Item = ({ itemProp, onDeleteItemProp }) => {
+const Item = ({ itemProp, onDeleteItemProp, onToggleItemProp }) => {
   return (
     <div className="listItem">
       <li>
         <span>
-          {itemProp.quantity} {itemProp.description}
+          <input
+            type="checkbox"
+            value={itemProp.packed}
+            onChange={() => onToggleItemProp(itemProp.id)}
+          />
+          <span
+            style={itemProp.packed ? { textDecoration: "line-through" } : {}}
+          >
+            {itemProp.quantity} {itemProp.description}
+          </span>
           {"  "}
           <button
             style={{ color: "red", fontWeight: "bolder" }}

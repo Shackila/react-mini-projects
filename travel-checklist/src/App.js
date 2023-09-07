@@ -14,6 +14,13 @@ function App() {
   const deleteItem = (id) => {
     setItems((items) => items.filter((propItem) => propItem.id !== id));
   };
+  const toggleItem = (id) => {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  };
   return (
     <div>
       <Logo />
@@ -21,9 +28,10 @@ function App() {
       <PackingList
         propItem={items}
         onDeleteItem={deleteItem}
+        onToggleItem={toggleItem}
         key={new Date().getUTCMilliseconds}
       />
-      <Stats />
+      <Stats itemProp={items} />
     </div>
   );
 }
