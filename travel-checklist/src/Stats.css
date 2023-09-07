@@ -1,6 +1,6 @@
 .stats {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: #6c3428;
   font-size: 24px;
   font-style: oblique;

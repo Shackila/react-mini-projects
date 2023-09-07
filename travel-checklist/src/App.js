@@ -21,6 +21,12 @@ function App() {
       )
     );
   };
+  const clearListHandler = () => {
+    const confirmation = window.confirm(
+      "Are You Sure You Want To Delete All Items?"
+    );
+    if (confirmation) setItems([]);
+  };
   return (
     <div>
       <Logo />
@@ -29,6 +35,7 @@ function App() {
         propItem={items}
         onDeleteItem={deleteItem}
         onToggleItem={toggleItem}
+        onClearList={clearListHandler}
         key={new Date().getUTCMilliseconds}
       />
       <Stats itemProp={items} />
