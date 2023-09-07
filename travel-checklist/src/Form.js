@@ -1,15 +1,23 @@
 import { useState } from "react";
 import "./Form.css";
-import PackingList from "./PackingList.js";
 
-const Form = () => {
+const Form = ({ onAddItem }) => {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setDescription(e.target.value);
-    console.log(description);
+    if (description.trim() !== "") {
+      const newItem = {
+        description,
+        quantity,
+        isPacked: false,
+        id: new Date().getSeconds(),
+      };
+      onAddItem(newItem);
+      setQuantity(1);
+      setDescription("");
+    }
   };
   return (
     <div className="form-wrapper">
@@ -17,7 +25,7 @@ const Form = () => {
         <form onSubmit={submitHandler}>
           <select
             value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
+            onChange={(e) => setQuantity(Number(e.target.value))} //state changes
           >
             {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
               <option value={num} key={num}>
@@ -28,13 +36,15 @@ const Form = () => {
           <input
             type="text"
             placeholder="item..."
-            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)} //state changes
           ></input>
-          <button type="submit">ADD</button>
+          <button type="submit" onClick={onAddItem}>
+            Add
+          </button>
         </form>
       </div>
       <hr />
-      <PackingList descriptionName={description} quantityCount={quantity} />
     </div>
   );
 };

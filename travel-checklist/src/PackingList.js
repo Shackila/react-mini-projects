@@ -1,23 +1,14 @@
 import "./PackingList.css";
 import Item from "./Item.js";
 // import { useState } from "react";
-const PackingList = (props) => {
-  const newItem = [
-    {
-      description: props.descriptionName,
-      quantity: props.quantityCount,
-      isPacked: false,
-      id: new Date(),
-    },
-  ];
+const PackingList = ({ propItem }) => {
   return (
-    <div>
-      <div className="list">
-        {newItem.map((item) => (
+    <div className="list">
+      <ul>
+        {propItem.map((item) => (
           <Item key={item.id} itemProp={item} />
         ))}
-      </div>
-      <hr />
+      </ul>
     </div>
   );
 };
