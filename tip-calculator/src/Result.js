@@ -7,7 +7,7 @@ const Result = ({ billAmount, yourRate, friendRate }) => {
   return (
     <div>
       You should pay {billAmount + tip}$ (${billAmount} + ${tip} tip)
-      <Gifs />
+      <Gifs tipProp={tip} />
     </div>
   );
 };

@@ -3,9 +3,14 @@ import { useState } from "react";
 
 import Result from "./Result.js";
 const Inputs = () => {
-  const [bill, setBill] = useState();
-  const [yourRate, setYourRate] = useState();
-  const [friendRate, setFriendRate] = useState();
+  const [bill, setBill] = useState(0);
+  const [yourRate, setYourRate] = useState(0);
+  const [friendRate, setFriendRate] = useState(0);
+  const onResetHandler = () => {
+    setBill(0);
+    setYourRate(0);
+    setFriendRate(0);
+  };
   return (
     <div className="content">
       <span>
@@ -45,7 +50,7 @@ const Inputs = () => {
       <br /> <br /> <br />
       <Result billAmount={bill} yourRate={yourRate} friendRate={friendRate} />
       <br /> <br /> <br />
-      <button>Reset</button>
+      <button onClick={onResetHandler}>Reset</button>
       <br />
       <br /> <br /> <br /> <br />
       <br /> <br /> <br />
