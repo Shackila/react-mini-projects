@@ -1,9 +1,9 @@
 import AccordionItem from "./AccordionItem.js";
 import "./styles.css";
-const Accordion = ({ faqsProp }) => {
+const Accordion = ({ data }) => {
   return (
-    <div>
-      {faqsProp.map((el, i) => (
+    <div className="accordion">
+      {data.map((el, i) => (
         <AccordionItem title={el.title} text={el.text} num={i} key={i} />
       ))}
     </div>

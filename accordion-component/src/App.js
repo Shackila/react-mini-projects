@@ -19,7 +19,7 @@ const faqs = [
 export default function App() {
   return (
     <div>
-      <Accordion faqsProp={faqs} />
+      <Accordion data={faqs} />
     </div>
   );
 }
