@@ -1,9 +1,9 @@
 import "./styles.css";
-import Inputs from "./Inputs.js";
+import TipCalculator from "./TipCalculator.js";
 function App() {
   return (
     <div>
-      <Inputs />
+      <TipCalculator />
     </div>
   );
 }
