@@ -1,13 +1,14 @@
 import Gifs from "./Gifs.js";
+import "./styles.css";
 const Result = ({ billAmount, yourRate, friendRate }) => {
-  const tip = Math.round(
-    billAmount * ((Number(yourRate) + Number(friendRate)) / 2 / 100)
-  );
-  console.log(Number(yourRate) + Number(friendRate));
+  const averageRate = (yourRate + friendRate) / 2;
+  const tip = Math.round(billAmount * (averageRate / 100));
   return (
     <div>
-      You should pay {billAmount + tip}$ (${billAmount} + ${tip} tip)
-      <Gifs tipProp={tip} />
+      <div className="position">
+        You should pay {billAmount + tip}$ (${billAmount} + ${tip} tip)
+      </div>
+      <Gifs tipProp={averageRate} />
     </div>
   );
 };

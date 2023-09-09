@@ -14,7 +14,7 @@ const TipCalculator = () => {
   };
   return (
     <div className="content">
-      <Input bill={bill} onSetBill={setBill}/>
+      <Input bill={bill} onSetBill={setBill} />
       <Select rate={yourRate} onSelect={setYourRate}>
         How did you like the service?
       </Select>
@@ -28,7 +28,9 @@ const TipCalculator = () => {
             yourRate={yourRate}
             friendRate={friendRate}
           />
-          <button onClick={onResetHandler}>Reset</button>
+          <button className="position button" onClick={onResetHandler}>
+            Reset
+          </button>
         </div>
       )}
       <br />
