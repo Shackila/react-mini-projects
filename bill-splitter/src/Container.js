@@ -3,11 +3,10 @@ import Splitter from "./Splitter.js";
 import { useState } from "react";
 import "./Container.css";
 const Container = () => {
+  const [bill, setBill] = useState("");
+  const [yourExpense, setYourExpense] = useState("");
   const [selectedFriend, setSelectedFriend] = useState(null);
-  const selectHandler = (friend) => {
-    setSelectedFriend(friend);
-  };
-  const initialFriends = [
+  const [data, setData] = useState([
     {
       name: "Negin",
       id: 123456,
@@ -19,17 +18,30 @@ const Container = () => {
       balance: -21,
     },
     { name: "Ali", id: 123458, balance: 45 },
-  ];
+  ]);
+  const selectHandler = (friend) => {
+    setSelectedFriend(friend);
+  };
+
   return (
     <div>
       <div className="container">
         <Friends
-          initialFriends={initialFriends}
+          initialFriends={data}
+          dataSetter={setData}
           selectedFriend={selectedFriend}
           selectHandler={selectHandler}
         />
         {selectedFriend && (
-          <Splitter selectedFriendName={selectedFriend.name} />
+          <Splitter
+            selectedData={data}
+            setSelectedData={setData}
+            selectedFriendName={selectedFriend.name}
+            bill={bill}
+            setBill={setBill}
+            yourExpense={yourExpense}
+            setYourExpense={setYourExpense}
+          />
         )}
       </div>
     </div>

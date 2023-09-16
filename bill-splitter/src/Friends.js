@@ -2,7 +2,12 @@ import "./Friends.css";
 import FriendItem from "./FriendItem.js";
 import NewFriend from "./NewFriend.js";
 import React, { useState } from "react";
-const Friends = ({ initialFriends, selectedFriend, selectHandler }) => {
+const Friends = ({
+  initialFriends,
+  selectedFriend,
+  selectHandler,
+  dataSetter,
+}) => {
   const [flag, setFlag] = useState(false);
   const addFriendHandler = () => {
     setFlag(!flag);
@@ -10,32 +15,35 @@ const Friends = ({ initialFriends, selectedFriend, selectHandler }) => {
   if (flag) {
     return (
       <div className="friends-wrapper">
-        {console.log(initialFriends.name)}
-        {initialFriends.map((data) => (
+        {initialFriends.map((mapData) => (
           <FriendItem
-            dataProp={data}
+            dataProp={mapData}
             selectedFriend={selectedFriend}
             onSelection={selectHandler}
-            key={data.id}
+            key={mapData.id}
           />
         ))}
 
         <div className="add-friend-bt">
           <button onClick={addFriendHandler}>Add Friend</button>
         </div>
-        <NewFriend flag={flag} setter={setFlag}/>
+        <NewFriend
+          flag={flag}
+          setter={setFlag}
+          initialFriends={initialFriends}
+          dataSetter={dataSetter}
+        />
       </div>
     );
   } else {
     return (
       <div className="friends-wrapper">
-        {console.log(initialFriends.name)}
-        {initialFriends.map((data) => (
+        {initialFriends.map((mapData) => (
           <FriendItem
-            dataProp={data}
+            dataProp={mapData}
             selectedFriend={selectedFriend}
             onSelection={selectHandler}
-            key={data.id}
+            key={mapData.id}
           />
         ))}
 

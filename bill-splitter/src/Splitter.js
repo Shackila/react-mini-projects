@@ -1,15 +1,53 @@
 import "./Splitter.css";
-import Inputs from "./Inputs.js";
-import Select from "./Select.js";
-const Splitter = ({ selectedFriendName }) => {
+import React, { useState } from "react";
+
+const Splitter = ({
+  selectedFriendName,
+  selectedData,
+  setSelectedData,
+  bill,
+  setBill,
+  yourExpense,
+  setYourExpense,
+}) => {
+  const [whoPays, setWhoPays] = useState("You");
+
+  const handleBill = (e) => {
+    const newValue = Number(e.target.value);
+    setBill(newValue);
+  };
+
+  const handleYourExpense = (e) => {
+    const newValue2 = Number(e.target.value);
+    setYourExpense(newValue2);
+  };
+
+  const friendExpense = bill ? bill - yourExpense : "";
+
   return (
     <div className="splitter-wrapper">
       <h3>Spill A Bill With {selectedFriendName}</h3>
-      <Inputs>Bill Value</Inputs>
-      <Inputs>Your Expense</Inputs>
-      <Inputs>{selectedFriendName}'s Expense</Inputs>
-      <Select>Who Is Paying The Bill?</Select>
-      <hr/>
+      <label>Bill Value: </label>
+      <input value={bill} onChange={handleBill} />
+      <hr />
+      <label>Your Expense: </label>
+      <input value={yourExpense} onChange={handleYourExpense} />
+      <hr />
+      <label>
+        {" "}
+        {console.log(friendExpense)}
+        {selectedFriendName}'s Expense
+      </label>
+      <input type="text" value={friendExpense} readOnly />
+      <hr />
+      <div>
+        <label>Who Is Paying The Bill?s</label>
+        <select value={whoPays} onChange={(e) => setWhoPays(e.target.value)}>
+          <option value="you">You</option>
+          <option value="friend">{selectedFriendName}</option>
+        </select>
+      </div>
+      <hr />
       <button>Spill Bill</button>
     </div>
   );
