@@ -1,0 +1,10 @@
+.friends-wrapper {
+  height: 299px;
+  width: 276px;
+  background-color: #ffff9d;
+  /* display: inline; */
+}
+.add-friend-bt {
+  margin: 0 auto;
+  width: fit-content;
+}

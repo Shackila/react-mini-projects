@@ -1,9 +1,9 @@
-import './App.css';
-
+import "./App.css";
+import Container from "./Container.js";
 function App() {
   return (
-    <div >
-      shit
+    <div>
+      <Container />
     </div>
   );
 }

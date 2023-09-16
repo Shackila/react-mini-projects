@@ -1,0 +1,9 @@
+.friend {
+  display: block;
+  background-color: #beeb9f;
+  margin: 0 auto;
+  width: fit-content;
+}
+.select-bt {
+  display: inline;
+}
