@@ -4,9 +4,10 @@ import NewFriend from "./NewFriend.js";
 import React, { useState } from "react";
 const Friends = ({
   initialFriends,
+  dataSetter,
   selectedFriend,
   selectHandler,
-  dataSetter,
+  whoPays,
 }) => {
   const [flag, setFlag] = useState(false);
   const addFriendHandler = () => {
@@ -21,6 +22,7 @@ const Friends = ({
             selectedFriend={selectedFriend}
             onSelection={selectHandler}
             key={mapData.id}
+            whoPays={whoPays}
           />
         ))}
 

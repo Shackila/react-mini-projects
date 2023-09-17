@@ -6,6 +6,8 @@ const Container = () => {
   const [bill, setBill] = useState("");
   const [yourExpense, setYourExpense] = useState("");
   const [selectedFriend, setSelectedFriend] = useState(null);
+  const [whoPays, setWhoPays] = useState("You");
+  const friendExpense = bill ? bill - yourExpense : "";
   const [data, setData] = useState([
     {
       name: "Negin",
@@ -23,6 +25,29 @@ const Container = () => {
     setSelectedFriend(friend);
   };
 
+  const splitButtonHandler = (value) => {
+    console.log(value);
+    if (whoPays === "You") {
+      console.log(`he owes you ${friendExpense}`);
+      setData((friends) =>
+        friends.map((friend) =>
+          friend.id === selectedFriend.id
+            ? { ...friend, balance: friend.balance + value }
+            : friend
+        )
+      );
+    } else {
+      console.log(`you owe him ${yourExpense}`);
+      setData((friends) =>
+        friends.map((friend) =>
+          friend.id === selectedFriend.id
+            ? { ...friend, balance: friend.balance + value }
+            : friend
+        )
+      );
+    }
+  };
+
   return (
     <div>
       <div className="container">
@@ -31,16 +56,23 @@ const Container = () => {
           dataSetter={setData}
           selectedFriend={selectedFriend}
           selectHandler={selectHandler}
+          whoPays={whoPays}
         />
         {selectedFriend && (
           <Splitter
+            // onSplitBill={splitButtonHandler}
             selectedData={data}
             setSelectedData={setData}
             selectedFriendName={selectedFriend.name}
+            selectedFriend={selectedFriend}
             bill={bill}
             setBill={setBill}
             yourExpense={yourExpense}
             setYourExpense={setYourExpense}
+            whoPays={whoPays}
+            setWhoPays={setWhoPays}
+            onSplitBill={splitButtonHandler}
+            friendExpense={friendExpense}
           />
         )}
       </div>
