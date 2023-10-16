@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import { useState } from "react";
+import Star from "./Star.js";
+function App({ maxRating }) {
+  const [rating, setRating] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ display: "inline" }}>
+      {Array.from(
+        { length: maxRating },
+        (_, i /* loops over the numbers (i) not the elements (_) */) => (
+          <span>
+            <Star key={i} />
+            <p>{rating}</p>
+          </span>
+        )
+      )}
     </div>
   );
 }
